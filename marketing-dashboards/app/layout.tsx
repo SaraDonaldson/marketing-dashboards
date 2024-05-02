@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import DrawerMenu from "@/Components/DrawerMenu/DrawerMenu";
+import {  useState} from "react"
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -14,9 +16,17 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body >
+        <div className="flex overflow-hidden">
+        <DrawerMenu />
+        </div>
+      <div className="full flex-1">
+      <div className={inter.className}>{children}</div>
+      </div>
+      </body>
     </html>
   );
 }
