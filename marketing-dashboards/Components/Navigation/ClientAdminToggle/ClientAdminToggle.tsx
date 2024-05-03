@@ -1,8 +1,8 @@
 'use client'
 import Link from "next/link";
-import {useState} from "react"
-import { usePathname} from 'next/navigation'
-
+import {useState, useEffect} from "react"
+import { usePathname, useRouter} from 'next/navigation'
+// import { useRouter } from 'next/router'
 
 // ----- Future
 // I would like to animate the slide - the ball and the color
@@ -12,11 +12,33 @@ const ClientAdminToggle: React.FC = () => {
     const pathname = usePathname()
     const [toggleAdmin, setToggleAdmin] = useState<boolean>(true);
     const [toggleClient, setToggleClient] = useState<boolean>(false);
-
-        function handleToggle(){
+  
     
+    const router = useRouter();
+
+    useEffect(() => {
+        handleToggleState()
+    }, [])
+    
+    function handleToggleState(){
+       let manageAdminPortal = pathname.includes('admin') ? true : false;
+       let manageClientPortal = pathname.includes('client') ? true : false;
+        setToggleAdmin(manageAdminPortal);
+        setToggleClient(manageClientPortal)
+    }
+    
+    function handleToggle(){
             setToggleAdmin((state) => !state);
             setToggleClient((state) => !state)
+            
+            let before = pathname.split('/')[1];
+            let lastIndex = pathname.split("/").length+1
+            let after = lastIndex < 3 ? pathname.split('/').slice(3, lastIndex): [];
+            let portalView = toggleAdmin ? "client" : "admin";
+            console.log("----------  before: ", before, "--------------- after: ", after ? after.join('/') : "none after")
+            let newPathname = `/${before}/${portalView}/${after}`
+            router.push(newPathname)
+            
         }
 
     return(
