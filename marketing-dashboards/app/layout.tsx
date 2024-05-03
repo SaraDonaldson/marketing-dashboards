@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import DrawerMenu from "@/Components/DrawerMenu/DrawerMenu";
+import DrawerMenu from "@/Components/Navigation/DrawerMenu/DrawerMenu";
 import {  useState} from "react"
+import TopNavigation from "@/Components/Navigation/TopNavigation/TopNavigation";
+import ClientAdminToggle from "@/Components/Navigation/ClientAdminToggle/ClientAdminToggle";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,12 +22,18 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body >
+        <div className="fixed overflow-hidden">
+          <TopNavigation/>
+        </div>
+        <div className="flex flex-row justify-end z-40">
+                <ClientAdminToggle/>
+          </div>
         <div className="flex overflow-hidden">
         <DrawerMenu />
         </div>
-      <div className="full flex-1">
-      <div className={inter.className}>{children}</div>
-      </div>
+        <div className="relative full flex-1 mt-34">
+         <div className={inter.className}>{children}</div>
+        </div>
       </body>
     </html>
   );

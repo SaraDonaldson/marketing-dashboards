@@ -1,13 +1,15 @@
 'use client'
 import Link from "next/link";
 import {useState} from "react"
+import { usePathname} from 'next/navigation'
+
 
 // ----- Future
 // I would like to animate the slide - the ball and the color
 // This will need to be part of larger context/state and routing, local storage, etc.
 
 const ClientAdminToggle: React.FC = () => {
-
+    const pathname = usePathname()
     const [toggleAdmin, setToggleAdmin] = useState<boolean>(true);
     const [toggleClient, setToggleClient] = useState<boolean>(false);
 
@@ -18,7 +20,7 @@ const ClientAdminToggle: React.FC = () => {
         }
 
     return(
-        <div className="flex flex-col mr-4 w-44 border-white border-2">
+        <div className="flex flex-col mr-4 w-44">
             <span className="flex justify-center align-center m-2">View</span>
             {toggleAdmin &&
             <div className="inline-flex items-center mb-5 cursor-pointer" onClick={e => handleToggle()}>
