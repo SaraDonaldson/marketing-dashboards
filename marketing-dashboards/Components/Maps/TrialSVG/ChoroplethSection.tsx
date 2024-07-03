@@ -6,9 +6,17 @@ import { useState, useContext, useEffect } from "react";
 import ChoroplethDataKey from './ChoroplethDataKey';
 import { stateInfoContext } from "./ChoroplethContext"
 import ChoroplethSVGInfoView from './ChoroplethSVGInfoView';
-import DynamicSVGChoropleth from './DynamicSVGChoropleth';
+import DynamicSVGChoropleth from '../DynamicSVG/DynamicSVGChoropleth';
+import ChoroplethTooltip from '../DynamicSVG/ChoroplethTooltip';
+
+interface StateData{
+  stateName:  string;
+  stateCode:  string;
+  dSVGData:   string;
+  color:      string;
 
 
+}
 
 
 function ChoroplethSection() {
@@ -21,11 +29,15 @@ function ChoroplethSection() {
         [ 75, 125 , 200, 250],
         ["bg-cyan-100", "bg-cyan-300","bg-cyan-500", "bg-cyan-700"]
          ])
+    const [focusOnState, setFocusOnState,] = useState<StateData>({stateName: "", stateCode: "",  dSVGData: "", color: ""});
          
          useEffect(() => {
             setInfoViewActive(showInfoView)
          }, [showInfoView])
-
+     
+    function handleChoroplethTooltipFocus(state:StateData): void{
+        setFocusOnState(state)
+     }
 
   return (
     <div className='w-9/10'>
@@ -67,7 +79,12 @@ function ChoroplethSection() {
         </div>
 
         <div className='mt-32'>
-            <DynamicSVGChoropleth/>
+          <ChoroplethTooltip
+          stateData = {focusOnState}
+          />
+            <DynamicSVGChoropleth
+            setTooltip = {e => handleChoroplethTooltipFocus(e)}
+            />
         </div>
         </div>
       
