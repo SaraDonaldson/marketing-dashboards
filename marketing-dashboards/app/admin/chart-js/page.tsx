@@ -5,16 +5,14 @@ import DashboardSelectBar from "@/Components/Dashboard/DashboardSelectBar/Dashbo
 
 export default async function index() {
   return (
-    <div className="h-full mt-1/12">
+    <div className="h-full bg-transparent">
       <div className="w-2/3 m-auto">
       <DashboardSelectBar/>
       </div>
 
-      <div className="absolute top-32 bg-slate-500 w-full">
-       
-      
+      <div className="bg-transparent w-full">
 
-      <div className=" bg-gray-800 w-full place-items-center justify-center inline-grid grid-cols-2 gap-2 ">
+      <div className=" bg-slate-800 rounded-lg w-4/5 place-items-center justify-center inline-grid grid-cols-2 gap-2 ">
         <div className="flex grow rounded border-2 border-gray-700 bg-black w-auto col-span-1">
           <BarChart />
         </div>

@@ -7,7 +7,7 @@ import { useState } from "react";
 
 interface DynamicDropdownProps{
     dropdownTitle: string,
-    options: string[] 
+    options: [] 
 }
 
 

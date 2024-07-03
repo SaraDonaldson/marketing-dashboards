@@ -5,12 +5,12 @@ import DashboardSelectBar from "@/Components/Dashboard/DashboardSelectBar/Dashbo
 
 export default async function index() {
   return (
-    <div className="h-full mt-1/12">
+    <div className="h-full mt-24">
       <div className="w-2/3 m-auto">
       <DashboardSelectBar/>
       </div>
 
-      <div className="absolute top-32 bg-slate-500 w-full">
+      <div className="absolute top-36 bg-slate-500 w-full">
        
       
 
