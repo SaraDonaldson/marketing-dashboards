@@ -8,6 +8,7 @@ import { stateInfoContext } from "./ChoroplethContext"
 import ChoroplethSVGInfoView from './ChoroplethSVGInfoView';
 import DynamicSVGChoropleth from '../DynamicSVG/DynamicSVGChoropleth';
 import ChoroplethTooltip from '../DynamicSVG/ChoroplethTooltip';
+import ControllerDynamicSVG from '../DynamicSVG/ControllerDynamicSVG';
 
 interface StateData{
   stateName:  string;
@@ -53,7 +54,7 @@ function ChoroplethSection() {
           />
         </div> */}
         
-        <div className=' mt-12 w-3/4 flex justify-center'>
+        {/* <div className=' mt-12 w-3/4 flex justify-center'>
         {showInfoView &&
             <ChoroplethSVGInfoView
             />
@@ -64,7 +65,7 @@ function ChoroplethSection() {
         <div className="xs:w-full md:w-3/4 flex justify-center mt-16 xs:px-8 xs:scale-[0.35] sm:scale-[.8] lg:scale-none xl:scale-[1.25]">
         <TrialSVG
         />
-        </div>
+        </div> */}
         
 
 
@@ -79,12 +80,7 @@ function ChoroplethSection() {
         </div>
 
         <div className='mt-32'>
-          <ChoroplethTooltip
-          stateData = {focusOnState}
-          />
-            <DynamicSVGChoropleth
-            setTooltip = {e => handleChoroplethTooltipFocus(e)}
-            />
+          <ControllerDynamicSVG/>
         </div>
         </div>
       
