@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { Suspense, useEffect, useState } from 'react'
 import {createContext, useContext} from "react"
 import { stateContext } from "./ContextDynamicSVG"
 import ChoroplethTooltip from './ChoroplethTooltip'
 import DynamicSVGChoropleth from './DynamicSVGChoropleth'
+import Loading from "@/app/svg-map/loading";
 
 interface StateData{
     stateName:  string;
@@ -31,6 +32,7 @@ function ControllerDynamicSVG() {
         [ 75, 125 , 200, 250],
         ["bg-cyan-100", "bg-cyan-300","bg-cyan-500", "bg-cyan-700"]
          ])
+    const [choroplethIsLoading, setChoroplethIsLoading] = useState<Boolean>(true)
          const [focusOnState, setFocusOnState,] = useState<StateData>({stateName: "", stateCode: "",  dSVGData: "", color: "", setColor: () => {}, clicks: 0});
 
          function assignColor(stateData:StateData){
@@ -53,23 +55,30 @@ function ControllerDynamicSVG() {
             setFocusOnState(state)
          }
 
+       
+
         useEffect(() => {
             sortColors()
         }, [])
+
+    
         
   return (
     <div>
-
-        <ChoroplethTooltip
-          stateData = {focusOnState}
+        
+         <ChoroplethTooltip
+         stateData = {focusOnState}
+         />
+         <Suspense fallback={<Loading/>}>
+         <DynamicSVGChoropleth
+          SVGData= { choroplethSVGData}
+          setTooltip = {e => handleChoroplethTooltipFocus(e)}
           />
-            <DynamicSVGChoropleth
-            SVGData= { choroplethSVGData}
-            setTooltip = {e => handleChoroplethTooltipFocus(e)}
-            />
+       </Suspense>
+          
 
     </div>
   )
-}
+} 
 
 export default ControllerDynamicSVG
