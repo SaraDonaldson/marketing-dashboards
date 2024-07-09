@@ -442,3 +442,14 @@ export const stateContext = createContext<ChoroplethSVGContext>({
                   }
                 ]
  }) });
+
+
+ interface choroplethLoadingContext {
+      isLoading: boolean;
+      setIsLoading: (isLoading: boolean) => void;
+ }
+
+ export const choroplethLoading= createContext<choroplethLoadingContext>({
+    isLoading: true,
+    setIsLoading:   () => {},
+ })
