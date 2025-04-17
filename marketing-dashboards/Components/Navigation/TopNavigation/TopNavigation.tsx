@@ -14,12 +14,18 @@ const TopNavigation: React.FC = () => {
     const afterLink = pathLength < 3 ? pathname.split("/").slice(3, pathLength): "";
 
 
-
     return(
-        <div className="fixed h-16 w-full bg-slate-900 bg-opacity-80 backdrop-blur-sm border-b-[0.02px] border-slate-700">
+        <div className="fixed h-16 w-full bg-slate-900 bg-opacity-80 backdrop-blur-sm border-b-[0.02px] border-slate-700 flex flex-row">
+            <div className="flex start w-1/4 h-16 pl-16">
+                <Link href="https://www.saradonaldson.dev/">
+                    <div className="flex flex-row items-center font-semibold sm:text-xs md:text-sm  h-16 text-slate-200">
+                        <span>Back to Portfolio</span>
+                    </div>
+                </Link>
+            </div>
 
-           <div className="flex justify-end w-full ">
-            <div className="flex flex-row justify-center sm:full md:w-3/4 lg:w-1/2 h-16  ">
+           <div className="flex justify-end w-3/4 ">
+            <div className="flex flex-row justify-center sm:full md:w-3/4 lg:w-1/2 h-16 ">
                 <div className="flex flex-row justify-between items-center font-semibold sm:text-xs md:text-sm sm-full md:w-1/2 lg:w-2/3 h-16 text-slate-200">
                 <Link className={`px-6 py-5 ${ pathname.includes("/chart-js") && "text-purple-400"}`} href={`/${beforeLink}/chart-js${afterLink}`}>Chart JS</Link>
                 <Link className={`px-6 py-5 ${ pathname.includes("/#") && "bg-gray-800"}`} href="#">D3</Link>
