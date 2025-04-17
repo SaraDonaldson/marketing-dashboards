@@ -3,7 +3,7 @@ import {createContext, useContext} from "react"
 import { stateContext } from "./ContextDynamicSVG"
 import ChoroplethTooltip from './ChoroplethTooltip'
 import DynamicSVGChoropleth from './DynamicSVGChoropleth'
-import Loading from "@/app/svg-map/loading";
+import Loading from "@/app/geo/svg-map/loading";
 
 interface StateData{
     stateName:  string;
