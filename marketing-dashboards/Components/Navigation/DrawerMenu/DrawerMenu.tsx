@@ -20,8 +20,8 @@ return (
 
 
       <span className="sticky pt-24 font-semibold uppercase text-slate-300 py-2">Menu</span>
-  <div className="relative py-4 pr-16 w-full scrollbar-thin scrollbar-thumb-purple-700 scrollbar-track-slate-900 overflow-y-scroll">
-      <div className="space-y-2 xs:text-xs lg:text-sm text-white">
+  <div className="relative py-4 pr-16 w-full scrollbar-thin scrollbar-thumb-purple-700 scrollbar-track-slate-900 overflow-y-scroll ">
+      <div className="space-y-2 xs:text-xs lg:text-sm text-white min-h-[1500px]">
       
       <div>
             <Link href="/dashboard" className={`flex items-center p-2 rounded-lg text-white hover:bg-gray-100 dark:hover:bg-gray-700 group ${pathname.includes("dashboard") && `text-purple-500 bg-gray-700`}`}>
